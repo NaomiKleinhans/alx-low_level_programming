@@ -1,9 +1,8 @@
 #include <stdio.h>
 /**
- * main - Entry point (print the string in the put function
- *
+ * main - Entry point (prints the size of various types)
  * Description: using main fuction
- * Return: Always 0 (Success)
+ * Return: 0 if exited properly, non-zero otherwise
  */
 int main(void)
 {
@@ -13,10 +12,10 @@ int main(void)
 	long long int lli;
 	float f;
 
-	printf("Size of a char: %ld byte(s)\n", sizeof(c));
-	printf("size of an int: %lu byte(s)\n", sizeof(i));
-	printf("size of a long int: %lu byte(s)\n", sizeof(li));
-	printf("size of a long long int: %lu byte(s)\n", sizeof(lli));
-	printf("size of a float: %lu byte(s)\n", sizeof(f));
+	printf("Size of a char: %d byte(s)\n", sizeof(c));
+	printf("Size of an int: %d byte(s)\n", sizeof(i));
+	printf("Size of a long int: %d byte(s)\n", sizeof(li));
+	printf("Size of a long long int: %d byte(s)\n", sizeof(lli));
+	printf("Size of a float: %d byte(s)\n", sizeof(f));
 	return (0);
 }
