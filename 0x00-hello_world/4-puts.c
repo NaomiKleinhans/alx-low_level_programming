@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * description : 'display a string using the puts method'
+ * Return: 0 after printing function
  *
  */
 
