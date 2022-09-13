@@ -2,7 +2,9 @@
 #include "main.h"
 
 /**
- * Main - Entry point (Print putchar)
+ * Main - Entry point
+ *
+ * Main function: Print putchar
  *
  * Return: Always 0 (success)
  */
