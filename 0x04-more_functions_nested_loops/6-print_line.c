@@ -5,18 +5,18 @@
  * @n: input number of times 
  * Return: a straight line
  */
-void print_line(in n)
+void print_line(int n)
 {
-	int co;
+	int x;
 
 	if (n <= 0)
 	{
 		_putchar('\n');
 	else
 	{
-		for (co = 1; co <= n; co++)
+		for (x = 0; x < n; x++)
 		{
-		_putchar('_');
+		_putchar(95);
 		}
 		_putchar('\n');
 	}
