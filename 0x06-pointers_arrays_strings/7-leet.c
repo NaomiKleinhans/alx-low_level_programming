@@ -10,12 +10,12 @@ char *leet(char *src)
 {
 	int a = 0, b = 0, l = 5;
 	char r[5] = {'A', 'E', 'O', 'T', 'L'};
-	chear n[5] = {'4', '3', '0', '7', '1'};
+	char n[5] = {'4', '3', '0', '7', '1'};
 
 	while (src[a])
 	{
 		b = 0;
-		
+
 		while (b < l)
 		{
 			if (src[a] == r[b] || src[a] - 32 == r[b])
@@ -26,5 +26,5 @@ char *leet(char *src)
 		}
 		a++;
 	}
-	return (src)
+	return (src);
 }
