@@ -21,8 +21,10 @@ int main(void)
 
 			if (a == 8 && a == 8)
 				continue;
-
 			putchar(',');
+			
+			if (a == 8 && a == 9)
+				continue;
 			putchar(' ');
 		}
 	}
