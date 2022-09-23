@@ -4,27 +4,32 @@
 /**
  * main - Entry point
  *
- * Description: prints all different combinations of two digits
+ * Description: prints all different smallest combinations of two digits
  *
  * Return: ALways 0 (Success)
  */
 
 int main(void)
 {
-	int d;
+	int a, d;
 
-	for (d = 0; d < 100; d++)
+	for (a = 0; a < 99; a++)
+
 	{
-		putchar((d / 10) + '0');
+		for (d = a + 1; d < 100; d++)
 
-		putchar((d % 10) + '0');
-
-		if (d != 99)
 		{
-			putchar(',');
-			putchar(' ');
+			if (a != d)
+			{
+				putchar(a + '0');
+				putchar(d + '0');
+				if (d != 99)
+				{
+					putchar(',');
+					putchar(' ');
+				}
+			}
 		}
-		putchar('\n');
 	}
 		return (0);
 }
