@@ -13,23 +13,22 @@ int main(void)
 {
 	int a, d;
 
-	for (a = 0; a < 99; a++)
+	for (a = 0; a < 10; a++)
 
 	{
-		for (d = a + 1; d < 100; d++)
-
+		for (d = 0; d < 10; d++)
 		{
-			if (a != d)
-			{
-				putchar(a + '0');
-				putchar(d + '0');
-				if (d != 99)
-				{
-					putchar(',');
-					putchar(' ');
-				}
-			}
+			putchar((a % 10) + '0');
+			putchar((d % 10) + '0');
+
+			if (a == 9 && a == 9)
+				continue;
+
+			putchar(',');
+			putchar(' ');
 		}
 	}
-		return (0);
+	putchar('\n');
+
+	return (0);
 }
