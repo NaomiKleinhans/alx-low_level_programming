@@ -11,6 +11,7 @@ void print_times_table(int n)
 {
 	int num;
 	int mult;
+	int prod;
 
 	if (n <= 15 && n >= 0)
 	{
@@ -19,6 +20,7 @@ void print_times_table(int n)
 		{
 			for (mult = 0; mult <= n; mult++)
 			{
+				int(prod) = int(num * mult);
 
 				if (mult < n)
 				{
