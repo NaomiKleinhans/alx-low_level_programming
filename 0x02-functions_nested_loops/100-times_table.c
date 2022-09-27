@@ -3,38 +3,40 @@
 
 /**
  * print_times_table - prints the n times table, starting with 0
- * @n: parameter
- * Return: ALways 0.
+ * @n: number to which the time table will be printed
+ * Return: void and print times table
  */
 
 void print_times_table(int n)
 {
-	int num, mult, prod;
+	int num;
+	int mult;
+
+	if (n <= 15 && n >= 0)
 	{
-		_putchar('0');
 
-		for (mult = 1; mult <= n; mult++)
+		for (num = 0; num <= n; num++)
 		{
-			_putchar(',');
-			_putchar(' ');
-
-			prod = num * mult;
-
-			if (prod <= 99)
-				_putchar(' ');
-			if (prod <= 9)
-				_putchar(' ');
-
-			if (prod >= 100)
+			for (mult = 0; mult <= n; mult++)
 			{
-				_putchar((prod / 100) + '0');
-				_putchar(((prod / 10)) % 10 + '0');
+
+				if (mult < n)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}	
+				if ((num * (mult + 1)) < 10)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}
+				else if ((num * (mult + 1)) < 100)
+				{	
+					_putchar(' ');
+				}
 			}
-			else if (prod <= 99 && prod >= 10)
-			{
-				_putchar((prod / 10) + '0');
-			}
-			_putchar((prod % 10) + '0');
+
 		}
+			_putchar('\n');
 	}
 }
