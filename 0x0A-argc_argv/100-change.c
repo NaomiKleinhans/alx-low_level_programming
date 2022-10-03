@@ -16,7 +16,6 @@ int coins[] = {25, 10, 5, 2, 1};
 
 loc = total = change = aux = 0;
 
-loc = total = c
 if (argc != 2)
 {
 printf("Error\n");
@@ -34,13 +33,13 @@ while (coins[loc] != '\0')
 {
 if (total >= coins[loc])
 {
-aux = (total / coins[loc];
+aux = (total / coins[loc]);
 change += aux;
-total -= coins[position] * aux;
+total -= coins[loc] * aux;;
 }
 loc++;
 }
-
-printf("%d\n, change");
+}
+printf("%d\n", change);
 return (0);
 }
