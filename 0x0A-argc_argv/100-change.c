@@ -28,17 +28,17 @@ if (total <= 0)
 {
 printf("0\n");
 return (0);
-
+}
 while (coins[loc] != '\0')
 {
 if (total >= coins[loc])
 {
 aux = (total / coins[loc]);
 change += aux;
-total -= coins[loc] * aux;;
+total -= coins[loc] * aux;
 }
+
 loc++;
-}
 }
 printf("%d\n", change);
 return (0);
