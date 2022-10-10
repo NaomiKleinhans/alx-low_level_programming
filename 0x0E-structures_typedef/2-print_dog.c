@@ -19,6 +19,6 @@ void print_dog(struct dog *d)
 		d->owner = "(nil)";
 
 	printf("Name: %s\n", d->name);
-	printf("Age: %.6f\n", d->age);
+	printf("Age: %.6lf\n", d->age);
 	printf("Owner: %s\n", d->owner);
 }
