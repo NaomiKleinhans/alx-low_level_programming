@@ -8,4 +8,4 @@ You are allowed to use the standard library
 
 Write a function-like macro ABS(x) that computes the absolute value of a number x.
 
-Write a function-like macro SUM(x, y) that computes the sum of the numbers x and y.
+Write a function-like macro SUM(x, y) that computes the sum of the numbers x and y
