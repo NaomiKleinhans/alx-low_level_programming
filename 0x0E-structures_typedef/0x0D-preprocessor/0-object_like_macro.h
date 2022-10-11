@@ -1,10 +1,6 @@
-#include <stdio.h>
+#ifndef _object_like_macro_h_
+#define _object_like_macro_h_
 
 #define SIZE 1024
 
-int main ()
-{
-#ifdef SIZE 1024
-	printf(" ");
 #endif
-}
