@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * delete_nodeint_at_index -  deletes node at index of a linked list
@@ -26,16 +25,15 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		return (1);
 	}
 
-	for (i = 0; i < index; i+= 1)
+	for (i = 0; i < index; i += 1)
 	{
 		if (nxt == NULL)
 			return (-1);
-
 		prev = nxt;
 		nxt = nxt->next;
 	}
 	if (prev)
 		prev->next = nxt->next;
-	free(nxt)
+	free(nxt);
 		return (1);
 }
