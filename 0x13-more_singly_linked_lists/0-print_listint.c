@@ -12,13 +12,13 @@ size_t print_listint(const listint_t *h)
 {
 	size_t elmnt = 0;
 
-	const listint_t = h;
+	const listint_t *node = h;
 
-	while (h)
+	while (node)
 	{
-		printf("%d\n", h->n);
+		printf("%d\n", node->n);
 		elmnt++;
-		h = h->next;
+		node = node->next;
 	}
 	return (elmnt);
 }
