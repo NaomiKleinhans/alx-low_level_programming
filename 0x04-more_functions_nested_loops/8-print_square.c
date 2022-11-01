@@ -3,8 +3,8 @@
 /**
  * print_square - function that prints a square, followed by new line
  * @size: size of both width and length
- * Return: a square made of '#'
  */
+
 void print_square(int size)
 {
 	int x, y;
@@ -17,7 +17,7 @@ void print_square(int size)
 	{
 		for (x = 1; x <= size; x++)
 		{
-			putchar('#');
+			_putchar('#');
 			for (y = 2; y <= size; y++)
 			{
 				_putchar('#');
