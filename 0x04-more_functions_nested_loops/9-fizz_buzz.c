@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
 /**
  * main - prints numbers from 1 to 100
  * 3 multiples print Fizz instead of the number
  * 5 multiples print Buzz instead of the number
  * 3 & 5 multiples print FizzBuzz instead of the number
- * Return: Always 0 
+ * Return: Always 0
  */
 int main(void)
 {
@@ -24,7 +25,7 @@ int main(void)
 		else if (i % 3 == 0)
 			printf("%s", f);
 		else if (i % 5 == 0)
-			printf("%s".b);
+			printf("%s", b);
 		else
 			printf("%d", i);
 	}
