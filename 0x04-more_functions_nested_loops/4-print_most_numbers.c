@@ -3,8 +3,8 @@
 /**
  * print_most_numbers - function that prints most numbers from 0 to 9
  *
- * Return: 0-9, excluding 2 and 4 followed by a new line
  */
+
 void print_most_numbers(void)
 {
 	int i;
@@ -14,7 +14,7 @@ void print_most_numbers(void)
 		if ((i == 2) || (i == 4))
 			continue;
 		else
-			_putchar(i + '0');
+			_putchar((i % 10) + '0');
 	}
 	_putchar('\n');
 }
