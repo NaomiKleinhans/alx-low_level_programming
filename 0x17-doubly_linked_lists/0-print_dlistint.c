@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * print_dlistint - print all elements of list
@@ -8,22 +9,13 @@
 
 size_t print_dlistint(const dlistint_t *h);
 {
-	int elem;
+	size_t i;
 
-	elem = 0;
-
-	if (h == NULL)
-		return (elem);
-
-	while (h->prev != NULL)
-		h = h->prev;
-
-	while (h != NULL)
+	for (i = 0; h != NULL; i++)
 	{
 		printf("%d\n, h->n);
-		elem++;
 		h = h->next;
 	}
 
-	return (elem);
+	return (i);
 }
