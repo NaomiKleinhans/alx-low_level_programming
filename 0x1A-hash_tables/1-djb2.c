@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
-  * Hash_djb2 - function generating a random number through hash
+  * hash_djb2 - function generating a random number through hash
   * number given.
   * 
   * @str: string
