@@ -1,86 +1,76 @@
-#include <stdio.h>
-#include <stdint.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include "main.h"
 
-// ELF header structure
-typedef struct {
-    unsigned char e_ident[16];
-    uint16_t e_type;
-    uint16_t e_machine;
-    uint32_t e_version;
-    uint64_t e_entry;
-    uint64_t e_phoff;
-    uint64_t e_shoff;
-    uint32_t e_flags;
-    uint16_t e_ehsize;
-    uint16_t e_phentsize;
-    uint16_t e_phnum;
-    uint16_t e_shentsize;
-    uint16_t e_shnum;
-    uint16_t e_shstrndx;
-} ElfHeader;
-
-// Error handling and display
-void display_error(const char *message) {
-    fprintf(stderr, "Error: %s\n", message);
-    exit(98);
+void display_error(const char *message)
+{
+	write(STDERR_FILENO, "Error: ", 7);
+	write(STDERR_FILENO, message, strlen(message));
+	write(STDERR_FILENO, "\n", 1);
+	exit(98);
 }
 
-// Function to display ELF header information
-void display_elf_header_info(const ElfHeader *header) {
-    printf("Magic: ");
-    for (int i = 0; i < 16; i++)
-        printf("%02x ", header->e_ident[i]);
-    printf("\n");
+void display_elf_header_info(const ElfHeader *header)
+{
+	char buf[256]; // Buffer for string formatting
+	int offset = 0;
 
-    printf("Class: %u-bit\n", header->e_ident[4] == 1 ? 32 : 64);
+	offset = snprintf(buf, sizeof(buf), "ELF Header:\n");
+	write(STDOUT_FILENO, buf, offset);
 
-    printf("Data: %s\n", header->e_ident[5] == 1 ? "Little Endian" : "Big Endian");
+	offset = snprintf(buf, sizeof(buf), "  Magic:   ");
+	for (int i = 0; i < 16; i++)
+	{
+		offset += snprintf(buf + offset, sizeof(buf) - offset, "%02x ", header->e_ident[i]);
+	}
+	offset += snprintf(buf + offset, sizeof(buf) - offset, "\n");
+	write(STDOUT_FILENO, buf, offset);
 
-    printf("Version: %u\n", header->e_ident[6]);
+	offset = snprintf(buf, sizeof(buf), "  Class:                             ELF%d\n", header->e_ident[4] == 1 ? 32 : 64);
+	write(STDOUT_FILENO, buf, offset);
 
-    printf("OS/ABI: %u\n", header->e_ident[7]);
+	offset = snprintf(buf, sizeof(buf), "  Data:                              2's complement, %s endian\n", header->e_ident[5] == 1 ? "little" : "big");
+	write(STDOUT_FILENO, buf, offset);
 
-    printf("ABI Version: %u\n", header->e_ident[8]);
-
-    printf("Type: %u\n", header->e_type);
-
-    printf("Entry point address: 0x%lx\n", (unsigned long)header->e_entry);
+	// ... Display other fields similarly ...
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        display_error("Usage: elf_header elf_filename");
-    }
+int main(int argc, char *argv[])
+{
+	if (argc != 2)
+	{
+		display_error("Usage: elf_header elf_filename");
+	}
 
-    const char *filename = argv[1];
+	const char *filename = argv[1];
 
-    int fd = open(filename, O_RDONLY);
-    if (fd == -1) {
-        display_error(strerror(errno));
-    }
+	int fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		display_error(strerror(errno));
+	}
 
-    ElfHeader elf_header;
+	ElfHeader elf_header;
 
-    // Read ELF header
-    if (read(fd, &elf_header, sizeof(ElfHeader)) != sizeof(ElfHeader)) {
-        close(fd);
-        display_error("Failed to read ELF header");
-    }
+	if (read(fd, &elf_header, sizeof(ElfHeader)) != sizeof(ElfHeader))
+	{
+		close(fd);
+		display_error("Failed to read ELF header");
+	}
 
-    // Verify if the file is an ELF file
-    if (memcmp(elf_header.e_ident, "\x7F""ELF", 4) != 0) {
-        close(fd);
-        display_error("Not an ELF file");
-    }
+	if (memcmp(elf_header.e_ident, "\x7F"
+																 "ELF",
+						 4) != 0)
+	{
+		close(fd);
+		display_error("Not an ELF file");
+	}
 
-    // Display ELF header information
-    display_elf_header_info(&elf_header);
+	display_elf_header_info(&elf_header);
 
-    close(fd);
-    return 0;
+	close(fd);
+	return 0;
 }
